@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>교사 질문 공모전</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+/* 레이아웃: 한 줄 문서형 — 좁은 본문 폭, 표는 가로 스크롤 상자, 빈칸은 형광펜 표시 */
+:root{
+  --bg:#f6f7f5; --paper:#ffffff; --ink:#1f2a2e; --muted:#5b676b; --line:#d9dfdc;
+  --accent:#1f6f6a; --accent-soft:#e3efed; --blank:#fbe7a1; --blank-ink:#5a4300; --must:#b5482f;
+  --display:"Gowun Batang", "Noto Serif KR", serif;
+  --body:"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141a1c; --paper:#1b2326; --ink:#e4ebe9; --muted:#9aa8a6; --line:#2e3a3d;
+  --accent:#6cc1b8; --accent-soft:#1f3634; --blank:#5a4a12; --blank-ink:#ffe9a6; --must:#ee8a70; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a1c; --paper:#1b2326; --ink:#e4ebe9; --muted:#9aa8a6; --line:#2e3a3d;
+  --accent:#6cc1b8; --accent-soft:#1f3634; --blank:#5a4a12; --blank-ink:#ffe9a6; --must:#ee8a70; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:2.1rem}
+h2{font-size:1.35rem;padding-bottom:6px;border-bottom:1px solid var(--line)}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;color:var(--accent);font-weight:600}
+.lede{font-family:var(--display);font-size:1.15rem;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:14px}
+.blank{background:var(--blank);color:var(--blank-ink);padding:1px 6px;border-radius:3px;font-weight:500}
+.notice{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blank);padding:14px 16px;border-radius:4px;display:flex;flex-direction:column;gap:6px}
+.notice strong{font-size:.92rem}
+.notice ul{margin:0;padding-left:18px}
+.seed{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.seed .q{font-family:var(--display);font-size:1.25rem}
+.seed .meta{font-size:.85rem;color:var(--muted)}
+ol.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+ol.steps li::marker{color:var(--accent);font-weight:600}
+.opt{font-size:.8rem;color:var(--muted)}
+.table{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:620px}
+th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--accent-soft);font-weight:600}
+tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;text-align:center;white-space:nowrap}
+.must{color:var(--must);font-weight:600}
+.small{font-size:.85rem;color:var(--muted)}
+.check{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.example{border:1px dashed var(--line);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;background:var(--paper)}
+.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600;align-self:flex-start}
+dl{margin:0;display:grid;grid-template-columns:7.5em 1fr;gap:8px 14px}
+dt{font-weight:600;color:var(--muted);font-size:.88rem}
+dd{margin:0;min-width:0}
+@media (max-width:520px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
+html,body{margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <span class="eyebrow">운영안 초안 · 2026. 11. 7.</span>
+    <h1>교사 질문 공모전</h1>
+    <p class="lede">학생이 던진 최고의 질문을, 교사가 성취기준으로 다시 묻는다.</p>
+  </header>
+
+  <div class="notice">
+    <strong>채울 것 (형광펜 표시)</strong>
+    <ul>
+      <li>학생질문공모전 1등 질문 원문, 학년·교과·단원</li>
+      <li>학생질문공모전 채점표 5기준 이름 (아래 표는 같은 5×4 구조로 새로 짠 것)</li>
+      <li>대상·기간·제출 방법·심사·시상</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>공모 과제</h2>
+    <p>참가 교사 모두가 <b>같은 1등 학생 질문</b> 하나를 받아 각자 재구성합니다. 출발점이 같아서 교사마다 무엇을 다르게 보았는지 비교할 수 있습니다.</p>
+    <div class="seed">
+      <span class="meta">학생질문공모전 1등 질문</span>
+      <span class="q"><span class="blank">원문 그대로 넣기</span></span>
+      <span class="meta"><span class="blank">○학년 · ○○과 · 단원 ○○○</span></span>
+    </div>
+    <ol class="steps">
+      <li><b>학생 질문 읽기</b>: 학생이 궁금해한 것과 이미 짐작하는 것을 1~2문장으로 쓴다.</li>
+      <li><b>성취기준 연결</b>: 성취기준 1~2개를 고르고, 내용 요소·기능·가치·태도 중 어디가 맞닿는지 표시한다.</li>
+      <li><b>핵심 질문 도출</b> <span class="opt">(연수 실습지 3번 순서)</span>: 핵심어 뽑기 → 핵심 아이디어를 단원 수준으로 재진술 → 재진술 문장 나누기 → 각각 질문으로 바꾸기 → 학생 질문과 합쳐 핵심 질문 1개 완성.</li>
+      <li><b>탐구 질문</b>: 핵심 질문을 구체화하는 질문 2~3개, 각각 다루는 성취기준 요소를 표시한다.</li>
+      <li><b>재구성 이유</b>: 살린 것, 바꾼 것, 그 까닭을 3~5문장으로 쓴다.</li>
+      <li><b>평가로 잇기</b> <span class="opt">(선택)</span>: 서·논술형 문항 1개와 상·중·하 채점 기준.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>심사 기준</h2>
+    <p class="small">5기준 × 4척도. 점수 = 척도 × 배점 ÷ 4, 100점 만점. <span class="must">성취기준 부합성이 '미흡'이면 입상하지 못합니다.</span> 동점이면 ① 점수가 높은 쪽이 앞섭니다.</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>기준</th><th>배점</th><th>매우 우수 (4)</th><th>우수 (3)</th><th>보통 (2)</th><th>미흡 (1)</th></tr></thead>
+        <tbody>
+          <tr><td class="must">① 성취기준 부합성 (필수)</td><td class="num">30</td><td>내용 요소와 기능(수행 동사)을 모두 겨냥하고 학년군 수준에 맞다</td><td>둘 다 겨냥하나 한쪽이 약하다</td><td>내용 요소만 겨냥한다</td><td>연결이 없거나 다른 학년군 수준이다</td></tr>
+          <tr><td>② 학생 질문 의도 보존</td><td class="num">20</td><td>학생의 궁금증을 살리며 더 깊게 만든다. 학생이 알아볼 수 있다</td><td>소재는 살렸으나 궁금증의 방향이 조금 바뀌었다</td><td>소재만 남았다</td><td>학생 질문과 관계가 없다</td></tr>
+          <tr><td>③ 탐구 가능성 (3층)</td><td class="num">20</td><td>가설·근거·확인 방법으로 이어져 실제로 따져 볼 수 있다</td><td>원인·관계를 묻지만 확인 방법이 흐리다</td><td>사실 확인 질문 위주다</td><td>답이 하나로 정해져 있다</td></tr>
+          <tr><td>④ 개방성·전이</td><td class="num">15</td><td>답이 여럿이고 다른 사례·교과·생활로 넓힐 수 있다</td><td>답이 여럿이나 이 사례 안에 머문다</td><td>답이 거의 정해져 있다</td><td>예/아니요로 끝난다</td></tr>
+          <tr><td>⑤ 수업·평가 연계</td><td class="num">15</td><td>핵심 → 탐구 → 평가가 한 흐름이고 바로 수업에 쓸 수 있다</td><td>흐름은 있으나 차시 배치가 막연하다</td><td>질문들이 따로 논다</td><td>수업에 옮기기 어렵다</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>연수 실습지 기준과의 대응</h2>
+    <p class="small">심사 기준은 연수 실습지에서 쓴 기준을 이어받았습니다. 연수에 참여한 교사는 같은 눈으로 자기 작품을 점검할 수 있습니다.</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>공모전 심사 기준</th><th>실습지에서 온 곳</th><th>실습지 원래 문장 (요지)</th></tr></thead>
+        <tbody>
+          <tr><td class="must">① 성취기준 부합성</td><td>8번 정합성</td><td>성취기준과 핵심 아이디어를 반영해 핵심 질문을 설계했는가 / 내용 요소와 기능이 질문·활동·평가에 반영되었는가</td></tr>
+          <tr><td>② 학생 질문 의도 보존</td><td>8번 연계성 (앞 문항)</td><td>핵심 질문과 학생의 탐구 질문이 긴밀하게 연결되었는가</td></tr>
+          <tr><td>③ 탐구 가능성 (3층)</td><td>8번 연계성 (뒤 문항) + 3층 기준</td><td>탐구 활동이 고차적 사고 과정을 확인할 수 있게 설계되었는가</td></tr>
+          <tr><td>④ 개방성·전이</td><td>4-가 질문 선정 기준</td><td>토론 가능성, 전이 가능성, 계속성, 개방성, 확장성, 고차원적 사고 유도</td></tr>
+          <tr><td>⑤ 수업·평가 연계</td><td>8번 일관성</td><td>탐구 질문·활동·평가의 사고가 일관되게 이어지는가 / 교육과정·수업·평가가 유기적인가</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>성취기준 부합성 점검표</h2>
+    <p class="small">심사위원용. '예'가 5개면 4, 4개면 3, 2~3개면 2, 1개 이하면 1.</p>
+    <ul class="check">
+      <li>고른 성취기준이 학생 질문의 학년군·교과에 해당하는가?</li>
+      <li>핵심 질문이 성취기준의 <b>내용 요소</b>를 다루는가?</li>
+      <li>탐구 질문 중 하나 이상이 성취기준의 <b>기능(수행 동사)</b>을 하게 만드는가?</li>
+      <li>성취기준의 <b>가치·태도</b>가 질문 어딘가에 드러나는가?</li>
+      <li>성취기준에 없는 내용을 주된 목표로 삼지 않았는가?</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>재구성 예시</h2>
+    <div class="example">
+      <span class="tag">설명용 예시 · 실제 1등 질문 아님</span>
+      <dl>
+        <dt>학생 질문</dt><dd>"노키즈존은 나쁜 거 아니야?" (5학년 사회, 법과 인권의 보장)</dd>
+        <dt>성취기준</dt><dd>[6사03-02] 인권 침해 사례의 해결 방안 탐색, 인권 보호 활동 참여 → 내용 요소 '인권 침해 사례', 기능 '탐색하기·참여하기'</dd>
+        <dt>핵심 질문</dt><dd>법이 있는데도 인권이 침해된다면, 우리는 무엇을 더 해야 할까?</dd>
+        <dt>탐구 질문</dt><dd>어린이 출입 금지가 차별인지 무엇을 기준으로 판단할까? · 가게 주인과 어린이의 권리가 부딪치면 어떻게 판단할까? · 법이 있어도 차별이 계속되면 우리는 무엇을 할 수 있을까?</dd>
+        <dt>재구성 이유</dt><dd>'노키즈존'이라는 소재와 불공평하다는 느낌은 살리고, 답을 정해 둔 질문을 판단 기준을 묻는 질문으로 바꿨다. 성취기준이 해결과 참여까지 요구하므로 마지막 질문을 '우리가 할 일'로 넓혔다.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2>운영</h2>
+    <dl>
+      <dt>대상</dt><dd><span class="blank">본교 / 연구회 교사</span></dd>
+      <dt>기간</dt><dd><span class="blank">공모 기간</span></dd>
+      <dt>제출</dt><dd><span class="blank">양식 제출 방법</span></dd>
+      <dt>심사</dt><dd><span class="blank">심사위원 2명 이상</span>이 따로 채점하고, 기준별 차이가 2척도 이상이면 협의</dd>
+      <dt>시상</dt><dd><span class="blank">시상 내용</span></dd>
+      <dt>결과 활용</dt><dd>입상작을 1등 학생과 함께 공유해, 학생이 "내 질문이 이렇게 수업이 되었다"를 보게 함</dd>
+    </dl>
+  </section>
+</div>
+</body>
+</html>
